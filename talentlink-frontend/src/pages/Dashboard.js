@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from '../api/axios';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import DashboardLayout from './DashboardLayout';
@@ -18,7 +18,7 @@ function Dashboard() {
     const fetchProfile = async () => {
       if (!token) return setLoading(false);
       try {
-        const res = await axios.get('http://127.0.0.1:8000/api/profiles/', {
+        const res = await axios.get('/profiles/', {
           headers: { Authorization: `Bearer ${token}` },
         });
         const profiles = res.data;
@@ -44,8 +44,8 @@ function Dashboard() {
       try {
         const endpoint =
           profile.role === 'freelancer'
-            ? 'http://127.0.0.1:8000/api/proposals/'
-            : 'http://127.0.0.1:8000/api/projects/';
+            ? '/proposals/'
+            : '/projects/';
         const res = await axios.get(endpoint, {
           headers: { Authorization: `Bearer ${token}` },
         });
@@ -221,3 +221,4 @@ function Dashboard() {
 }
 
 export default Dashboard;
+

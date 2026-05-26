@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import axios from '../api/axios';
 import { FaUser, FaLock } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -25,7 +25,7 @@ function LoginPage() {
     setLoading(true);
 
     try {
-      const response = await axios.post('http://127.0.0.1:8000/api/token/', {
+      const response = await axios.post('/token/', {
         username,
         password,
       });
@@ -43,7 +43,7 @@ function LoginPage() {
       }
 
       const token = localStorage.getItem('access');
-      const profileRes = await axios.get('http://127.0.0.1:8000/api/profiles/', {
+      const profileRes = await axios.get('/profiles/', {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -146,7 +146,7 @@ export default LoginPage;
 
 
 /*import React, { useState } from 'react';
-import axios from 'axios';
+import axios from '../api/axios';
 import { FaUser, FaLock } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -171,7 +171,7 @@ function LoginPage() {
     setLoading(true);
 
     try {
-      const response = await axios.post('http://127.0.0.1:8000/api/token/', {
+      const response = await axios.post('/token/', {
         username,
         password,
       });
@@ -189,7 +189,7 @@ function LoginPage() {
       }
 
       const token = localStorage.getItem('access');  // ✅ Consistent key
-      const profileRes = await axios.get('http://127.0.0.1:8000/api/profiles/', {
+      const profileRes = await axios.get('/profiles/', {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -257,3 +257,4 @@ function LoginPage() {
 }
 
 export default LoginPage;*/
+

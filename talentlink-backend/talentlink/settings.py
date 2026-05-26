@@ -5,7 +5,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-@!so!+fj$qpw$1b*bpr_s60&_!-s56(c5g^&memh$sxn$9en9='
 DEBUG = True
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']  # ✅ Add for dev safety
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'talentlink-api.onrender.com']  # ✅ Add backend host for production
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -98,5 +98,6 @@ SIMPLE_JWT = {
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://localhost:3001",
+    "https://talentlink.vercel.app",
 ]
 CORS_ALLOW_CREDENTIALS = True

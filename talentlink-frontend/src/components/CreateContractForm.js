@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from '../api/axios';
 import { FaFileContract, FaCalendarAlt, FaClipboardList } from 'react-icons/fa';
 
 const CreateContractForm = () => {
@@ -105,7 +105,7 @@ const CreateContractForm = () => {
     setLoading(true);
     try {
       const response = await axios.post(
-        'http://127.0.0.1:8000/api/contracts/',
+        '/contracts/',
         formData,
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -165,3 +165,4 @@ const CreateContractForm = () => {
 };
 
 export default CreateContractForm;
+

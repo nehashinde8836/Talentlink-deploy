@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from '../api/axios';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -34,7 +34,7 @@ function ProfileSetup() {
 
     const checkExistingProfile = async () => {
       try {
-        const res = await axios.get('http://127.0.0.1:8000/api/profiles/', {
+        const res = await axios.get('/profiles/', {
           headers: { Authorization: `Bearer ${token}` }
         });
         if (Array.isArray(res.data) && res.data.length > 0) {
@@ -78,7 +78,7 @@ function ProfileSetup() {
     };
 
     try {
-      await axios.post('http://127.0.0.1:8000/api/profiles/', profileData, {
+      await axios.post('/profiles/', profileData, {
         headers: { Authorization: `Bearer ${token}` },
       });
       toast.success('Profile created successfully!');
@@ -152,3 +152,4 @@ function ProfileSetup() {
 }
 
 export default ProfileSetup;
+

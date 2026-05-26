@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from '../api/axios';
 import { toast } from 'react-toastify';
 
 function ProposalForm({ projectId }) {
@@ -29,7 +29,7 @@ function ProposalForm({ projectId }) {
     };
 
     try {
-      await axios.post('http://127.0.0.1:8000/api/proposals/', payload, {
+      await axios.post('/proposals/', payload, {
         headers: { Authorization: `Bearer ${token}` }
       });
       toast.success('✅ Proposal submitted!');
@@ -119,7 +119,7 @@ export default ProposalForm;
 
 
 /*import React, { useState } from 'react';
-import axios from 'axios';
+import axios from '../api/axios';
 
 function ProposalForm({ projectId }) {
   const [bidAmount, setBidAmount] = useState('');
@@ -141,7 +141,7 @@ function ProposalForm({ projectId }) {
   console.log("Submitting proposal payload:", payload);
 
   try {
-    await axios.post('http://127.0.0.1:8000/api/proposals/', payload, {
+    await axios.post('/proposals/', payload, {
       headers: { Authorization: `Bearer ${token}` }
     });
     alert('Proposal submitted!');
@@ -164,3 +164,4 @@ function ProposalForm({ projectId }) {
 }
 
 export default ProposalForm;*/
+

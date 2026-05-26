@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from '../api/axios';
 import { toast } from 'react-toastify';
 
 function ProjectForm() {
@@ -37,7 +37,7 @@ function ProjectForm() {
     };
 
     try {
-      await axios.post('http://127.0.0.1:8000/api/projects/', payload, {
+      await axios.post('/projects/', payload, {
         headers: { Authorization: `Bearer ${token}` }
       });
       toast.success('✅ Project created successfully!');
@@ -166,7 +166,7 @@ export default ProjectForm;
 
 
 /*import React, { useState } from 'react';
-import axios from 'axios';
+import axios from '../api/axios';
 
 function ProjectForm() {
   const [title, setTitle] = useState('');
@@ -190,7 +190,7 @@ function ProjectForm() {
     };
 
     try {
-      await axios.post('http://127.0.0.1:8000/api/projects/', payload, {
+      await axios.post('/projects/', payload, {
         headers: { Authorization: `Bearer ${token}` }
       });
       alert('✅ Project created successfully!');
@@ -304,7 +304,7 @@ export default ProjectForm;
 
 // ProjectForm.js
 /*import React, { useState } from 'react';
-import axios from 'axios';
+import axios from '../api/axios';
 
 function ProjectForm() {
   const [title, setTitle] = useState('');
@@ -328,7 +328,7 @@ function ProjectForm() {
     };
 
     try {
-      await axios.post('http://127.0.0.1:8000/api/projects/', payload, {
+      await axios.post('/projects/', payload, {
         headers: { Authorization: `Bearer ${token}` }
       });
       alert('Project created successfully!');
@@ -355,3 +355,4 @@ function ProjectForm() {
 }
 
 export default ProjectForm;*/
+

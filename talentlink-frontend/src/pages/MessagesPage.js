@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef, useMemo } from 'react';
-import axios from 'axios';
+import axios from '../api/axios';
 
 function MessagesPage() {
   const [users, setUsers] = useState([]);
@@ -15,7 +15,7 @@ function MessagesPage() {
   }), [token]);
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:8000/api/users/', { headers })
+    axios.get('/users/', { headers })
       .then(res => setUsers(res.data))
       .catch(err => console.error('Error fetching users:', err));
   }, [headers]);
@@ -26,7 +26,7 @@ function MessagesPage() {
     const fetchOrCreateConversation = async () => {
       try {
         const res = await axios.post(
-          'http://127.0.0.1:8000/api/conversations/get_or_create/',
+          '/conversations/get_or_create/',
           { participant_id: selectedUser.id },
           { headers }
         );
@@ -45,12 +45,12 @@ function MessagesPage() {
     const fetchMessages = async () => {
       try {
         const res = await axios.get(
-          `http://127.0.0.1:8000/api/conversations/${conversationId}/messages/`,
+          `/conversations/${conversationId}/messages/`,
           { headers }
         );
         setMessages(res.data);
         await axios.patch(
-          `http://127.0.0.1:8000/api/conversations/${conversationId}/mark_read/`,
+          `/conversations/${conversationId}/mark_read/`,
           {},
           { headers }
         );
@@ -72,7 +72,7 @@ function MessagesPage() {
     if (!newMessage.trim() || !conversationId) return;
     try {
       await axios.post(
-        'http://127.0.0.1:8000/api/messages/',
+        '/messages/',
         {
           conversation: conversationId,
           receiver: selectedUser.id,
@@ -213,3 +213,4 @@ function MessagesPage() {
 }
 
 export default MessagesPage;
+

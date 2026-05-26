@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import axios from '../api/axios';
 import { FaUser, FaEnvelope, FaLock } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import registerImage from './register-illustration.png'; // ✅ Add your image here (e.g., /src/register-illustration.png)
@@ -27,7 +27,7 @@ function RegisterPage() {
     setLoading(true);
 
     try {
-      const response = await axios.post('http://127.0.0.1:8000/api/register/', {
+      const response = await axios.post('/register/', {
         username: username.trim(),
         email: email.trim(),
         password: password.trim(),
@@ -144,7 +144,7 @@ export default RegisterPage;
 
 
 /*import React, { useState } from 'react';
-import axios from 'axios';
+import axios from '../api/axios';
 import { FaUser, FaEnvelope, FaLock } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 
@@ -170,7 +170,7 @@ function RegisterPage() {
     setLoading(true);
 
     try {
-      const response = await axios.post('http://127.0.0.1:8000/api/register/', {
+      const response = await axios.post('/register/', {
         username: username.trim(),
         email: email.trim(),
         password: password.trim(),
@@ -241,3 +241,4 @@ function RegisterPage() {
 }
 
 export default RegisterPage;*/
+

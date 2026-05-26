@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from '../api/axios';
 
 function ProjectFeed() {
   const [projects, setProjects] = useState([]);
@@ -28,7 +28,7 @@ function ProjectFeed() {
 
   const fetchProjects = async (filters = {}) => {
     const query = new URLSearchParams(filters).toString();
-    const url = `http://127.0.0.1:8000/api/projects/${query ? '?' + query : ''}`;
+    const url = `/projects/${query ? '?' + query : ''}`;
 
     try {
       const res = await axios.get(url, {
@@ -198,7 +198,7 @@ export default ProjectFeed;
 
 
 /*import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from '../api/axios';
 import FilterBar from '../components/FilterBar';
 
 function ProjectFeed() {
@@ -207,7 +207,7 @@ function ProjectFeed() {
 
   const fetchProjects = async (filters = {}) => {
     const query = new URLSearchParams(filters).toString();
-    const url = `http://127.0.0.1:8000/api/projects/${query ? '?' + query : ''}`;
+    const url = `/projects/${query ? '?' + query : ''}`;
 
     try {
       const res = await axios.get(url, {
@@ -305,7 +305,7 @@ export default ProjectFeed;*/
 
 
 /*import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from '../api/axios';
 import FilterBar from '../components/FilterBar';
 
 function ProjectFeed() {
@@ -314,7 +314,7 @@ function ProjectFeed() {
 
   const fetchProjects = async (filters = {}) => {
     const query = new URLSearchParams(filters).toString();
-    const url = `http://127.0.0.1:8000/api/projects/${query ? '?' + query : ''}`;
+    const url = `/projects/${query ? '?' + query : ''}`;
 
     try {
       const res = await axios.get(url, {
@@ -398,7 +398,7 @@ export default ProjectFeed;*/
 
 
 /*import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from '../api/axios';
 import FilterBar from '../components/FilterBar';
 
 function ProjectFeed() {
@@ -407,7 +407,7 @@ function ProjectFeed() {
 
   const fetchProjects = async (filters = {}) => {
     const query = new URLSearchParams(filters).toString();
-    const url = `http://127.0.0.1:8000/api/projects/${query ? '?' + query : ''}`;
+    const url = `/projects/${query ? '?' + query : ''}`;
 
     try {
       const res = await axios.get(url, {
@@ -481,7 +481,7 @@ export default ProjectFeed;
 
 // pages/ProjectFeed.js
 /*import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from '../api/axios';
 import FilterBar from '../components/FilterBar';
 
 function ProjectFeed() {
@@ -490,7 +490,7 @@ function ProjectFeed() {
 
   const fetchProjects = async (filters = {}) => {
     const query = new URLSearchParams(filters).toString();
-    const url = `http://127.0.0.1:8000/api/projects/${query ? '?' + query : ''}`;
+    const url = `/projects/${query ? '?' + query : ''}`;
 
     try {
       const res = await axios.get(url, {
@@ -524,3 +524,4 @@ function ProjectFeed() {
 }
 
 export default ProjectFeed;*/
+

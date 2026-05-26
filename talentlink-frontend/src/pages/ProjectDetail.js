@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from '../api/axios';
 import ProposalForm from './ProposalForm';
 import ReviewForm from './ReviewForm';
 import { useParams } from 'react-router-dom';
@@ -24,12 +24,12 @@ function ProjectDetail() {
   useEffect(() => {
     const fetchProjectAndProposals = async () => {
       try {
-        const projectRes = await axios.get(`http://127.0.0.1:8000/api/projects/${id}/`, {
+        const projectRes = await axios.get(`/projects/${id}/`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setProject(projectRes.data);
 
-        const proposalRes = await axios.get(`http://127.0.0.1:8000/api/proposals/?project=${id}`, {
+        const proposalRes = await axios.get(`/proposals/?project=${id}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setProposals(proposalRes.data);
@@ -46,13 +46,13 @@ function ProjectDetail() {
     try {
       const status = accepted ? 'accepted' : 'rejected';
 
-      await axios.patch(`http://127.0.0.1:8000/api/proposals/${proposalId}/`,
+      await axios.patch(`/proposals/${proposalId}/`,
         { status },
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
       if (status === 'accepted') {
-        await axios.post(`http://127.0.0.1:8000/api/contracts/`, {
+        await axios.post(`/contracts/`, {
           proposal_id: proposalId
         }, {
           headers: { Authorization: `Bearer ${token}` }
@@ -64,12 +64,12 @@ function ProjectDetail() {
 
       const refresh = async () => {
         try {
-          const projectRes = await axios.get(`http://127.0.0.1:8000/api/projects/${id}/`, {
+          const projectRes = await axios.get(`/projects/${id}/`, {
             headers: { Authorization: `Bearer ${token}` }
           });
           setProject(projectRes.data);
 
-          const proposalRes = await axios.get(`http://127.0.0.1:8000/api/proposals/?project=${id}`, {
+          const proposalRes = await axios.get(`/proposals/?project=${id}`, {
             headers: { Authorization: `Bearer ${token}` }
           });
           setProposals(proposalRes.data);
@@ -221,7 +221,7 @@ export default ProjectDetail;
 
 
 /*import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from '../api/axios';
 import ProposalForm from './ProposalForm';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -245,12 +245,12 @@ function ProjectDetail() {
   useEffect(() => {
     const fetchProjectAndProposals = async () => {
       try {
-        const projectRes = await axios.get(`http://127.0.0.1:8000/api/projects/${id}/`, {
+        const projectRes = await axios.get(`/projects/${id}/`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setProject(projectRes.data);
 
-        const proposalRes = await axios.get(`http://127.0.0.1:8000/api/proposals/?project=${id}`, {
+        const proposalRes = await axios.get(`/proposals/?project=${id}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setProposals(proposalRes.data);
@@ -267,13 +267,13 @@ function ProjectDetail() {
     try {
       const status = accepted ? 'accepted' : 'rejected';
 
-      await axios.patch(`http://127.0.0.1:8000/api/proposals/${proposalId}/`,
+      await axios.patch(`/proposals/${proposalId}/`,
         { status },
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
       if (status === 'accepted') {
-        await axios.post(`http://127.0.0.1:8000/api/contracts/`, {
+        await axios.post(`/contracts/`, {
           proposal_id: proposalId
         }, {
           headers: { Authorization: `Bearer ${token}` }
@@ -285,12 +285,12 @@ function ProjectDetail() {
 
       const refresh = async () => {
         try {
-          const projectRes = await axios.get(`http://127.0.0.1:8000/api/projects/${id}/`, {
+          const projectRes = await axios.get(`/projects/${id}/`, {
             headers: { Authorization: `Bearer ${token}` }
           });
           setProject(projectRes.data);
 
-          const proposalRes = await axios.get(`http://127.0.0.1:8000/api/proposals/?project=${id}`, {
+          const proposalRes = await axios.get(`/proposals/?project=${id}`, {
             headers: { Authorization: `Bearer ${token}` }
           });
           setProposals(proposalRes.data);
@@ -431,7 +431,7 @@ export default ProjectDetail;*/
 
 
 /*import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from '../api/axios';
 import ProposalForm from './ProposalForm';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -448,12 +448,12 @@ function ProjectDetail() {
 
   const fetchProjectAndProposals = async () => {
     try {
-      const projectRes = await axios.get(`http://127.0.0.1:8000/api/projects/${id}/`, {
+      const projectRes = await axios.get(`/projects/${id}/`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setProject(projectRes.data);
 
-      const proposalRes = await axios.get(`http://127.0.0.1:8000/api/proposals/?project=${id}`, {
+      const proposalRes = await axios.get(`/proposals/?project=${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setProposals(proposalRes.data);
@@ -465,7 +465,7 @@ function ProjectDetail() {
 
   const updateStatus = async (proposalId, accepted) => {
     try {
-      await axios.patch(`http://127.0.0.1:8000/api/proposals/${proposalId}/`, 
+      await axios.patch(`/proposals/${proposalId}/`, 
         { accepted }, 
         { headers: { Authorization: `Bearer ${token}` } }
       );

@@ -1,6 +1,4 @@
-import axios from 'axios';
-
-const API_BASE = 'http://127.0.0.1:8000/api';
+import axios from './axios';
 
 const getAuthHeaders = (token) => {
   if (!token || !token.startsWith('ey')) {
@@ -18,7 +16,7 @@ export const createContract = async (contractData, token) => {
   if (!headers) throw new Error('Cannot create contract: missing token');
 
   try {
-    const response = await axios.post(`${API_BASE}/contracts/`, contractData, { headers });
+    const response = await axios.post('/contracts/', contractData, { headers });
     return response.data;
   } catch (error) {
     console.error('Contract creation failed:', error.response?.data || error.message);
@@ -31,7 +29,7 @@ export const getContracts = async (token) => {
   if (!headers) throw new Error('Cannot fetch contracts: missing token');
 
   try {
-    const response = await axios.get(`${API_BASE}/contracts/`, { headers });
+    const response = await axios.get('/contracts/', { headers });
     return response.data;
   } catch (error) {
     console.error('Fetching contracts failed:', error.response?.data || error.message);

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import axios from 'axios';
+import axios from '../api/axios';
 import { FaUser, FaProjectDiagram, FaSearch } from 'react-icons/fa';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -14,7 +14,7 @@ function ContractsPage() {
   }), [token]);
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:8000/api/contracts/', { headers })
+    axios.get('/contracts/', { headers })
       .then(res => setContracts(res.data))
       .catch(err => console.error('Error fetching contracts:', err));
   }, [headers]);
@@ -22,7 +22,7 @@ function ContractsPage() {
   const updateStatus = async (id, newStatus) => {
     try {
       await axios.patch(
-        `http://127.0.0.1:8000/api/contracts/${id}/`,
+        `/contracts/${id}/`,
         { status: newStatus },
         { headers }
       );
@@ -228,7 +228,7 @@ export default ContractsPage;
 
 
 /*import React, { useEffect, useState, useMemo } from 'react';
-import axios from 'axios';
+import axios from '../api/axios';
 import { FaUser, FaProjectDiagram, FaSearch } from 'react-icons/fa';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -243,7 +243,7 @@ function ContractsPage() {
   }), [token]);
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:8000/api/contracts/', { headers })
+    axios.get('/contracts/', { headers })
       .then(res => setContracts(res.data))
       .catch(err => console.error('Error fetching contracts:', err));
   }, [headers]);
@@ -251,7 +251,7 @@ function ContractsPage() {
   const updateStatus = async (id, newStatus) => {
     try {
       await axios.patch(
-        `http://127.0.0.1:8000/api/contracts/${id}/`,
+        `/contracts/${id}/`,
         { status: newStatus },
         { headers }
       );
@@ -435,7 +435,7 @@ export default ContractsPage;*/
 
 
 /*import React, { useEffect, useState, useMemo } from 'react';
-import axios from 'axios';
+import axios from '../api/axios';
 import { FaUser, FaProjectDiagram } from 'react-icons/fa';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -449,7 +449,7 @@ function ContractsPage() {
   }), [token]);
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:8000/api/contracts/', { headers })
+    axios.get('/contracts/', { headers })
       .then(res => setContracts(res.data))
       .catch(err => console.error('Error fetching contracts:', err));
   }, [headers]);
@@ -457,7 +457,7 @@ function ContractsPage() {
   const updateStatus = async (id, newStatus) => {
     try {
       await axios.patch(
-        `http://127.0.0.1:8000/api/contracts/${id}/`,
+        `/contracts/${id}/`,
         { status: newStatus },
         { headers }
       );
@@ -596,7 +596,7 @@ export default ContractsPage;*/
 
 
 /*import React, { useEffect, useState, useMemo } from 'react';
-import axios from 'axios';
+import axios from '../api/axios';
 
 function ContractsPage() {
   const [contracts, setContracts] = useState([]);
@@ -607,7 +607,7 @@ function ContractsPage() {
   }), [token]);
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:8000/api/contracts/', { headers })
+    axios.get('/contracts/', { headers })
       .then(res => setContracts(res.data))
       .catch(err => console.error('Error fetching contracts:', err));
   }, [headers]);
@@ -615,7 +615,7 @@ function ContractsPage() {
   const updateStatus = async (id, newStatus) => {
     try {
       await axios.patch(
-        `http://127.0.0.1:8000/api/contracts/${id}/`,
+        `/contracts/${id}/`,
         { status: newStatus },
         { headers }
       );
@@ -690,3 +690,4 @@ function ContractsPage() {
 }
 
 export default ContractsPage;*/
+
