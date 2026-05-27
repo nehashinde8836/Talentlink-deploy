@@ -197,9 +197,9 @@ function HomePage() {
       <h4 className="footer-brand">TalentLink</h4>
       <p className="footer-text">Connecting freelancers with clients through secure projects, proposals, and contracts.</p>
       <div className="social-links">
-        <a href="#"><i className="fab fa-linkedin"></i></a>
-        <a href="#"><i className="fab fa-twitter"></i></a>
-        <a href="#"><i className="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i className="fab fa-linkedin"></i></a>
+        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i className="fab fa-twitter"></i></a>
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i className="fab fa-github"></i></a>
       </div>
     </div>
 
@@ -220,8 +220,8 @@ function HomePage() {
       <ul>
         <li><Link to="/privacy">Privacy Policy</Link></li>
         <li><Link to="/terms">Terms & Conditions</Link></li>
-        <li><a href="#">Help Center</a></li>
-        <li><a href="#">Blog</a></li>
+        <li><Link to="/help">Help Center</Link></li>
+        <li><Link to="/blog">Blog</Link></li>
       </ul>
     </div>
 

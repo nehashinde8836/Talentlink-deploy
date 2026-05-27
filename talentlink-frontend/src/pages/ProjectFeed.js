@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import axios from '../api/axios';
 
 function ProjectFeed() {
@@ -22,11 +22,7 @@ function ProjectFeed() {
     }
   }, []);
 
-  useEffect(() => {
-    if (token) fetchProjects(); // initial load
-  }, [token]);
-
-  const fetchProjects = async (filters = {}) => {
+  const fetchProjects = useCallback(async (filters = {}) => {
     const query = new URLSearchParams(filters).toString();
     const url = `/projects/${query ? '?' + query : ''}`;
 
@@ -38,7 +34,11 @@ function ProjectFeed() {
     } catch (err) {
       console.error("Error fetching projects:", err);
     }
-  };
+  }, [token]);
+
+  useEffect(() => {
+    if (token) fetchProjects(); // initial load
+  }, [token, fetchProjects]);
 
   const handleInputChange = (e) => {
     setFilters({ ...filters, [e.target.name]: e.target.value });
