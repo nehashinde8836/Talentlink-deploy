@@ -104,8 +104,10 @@ SIMPLE_JWT = {
 }
 
 # ✅ CORS Configuration
-CORS_ALLOWED_ORIGINS = os.getenv(
-    'CORS_ALLOWED_ORIGINS',
-    'http://localhost:3000,http://localhost:3001,https://talentlink-deploy.vercel.app'
-).split(',')
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://localhost:3001",
+    "https://talentlink-deploy.vercel.app",
+    "https://talentlink-deploy-git-main-qojfei-s-projects.vercel.app",
+]
 CORS_ALLOW_CREDENTIALS = True
