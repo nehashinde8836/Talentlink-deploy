@@ -7,7 +7,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-@!so!+fj$qpw$1b*bpr_s60&_!-s56(c5g^&memh$sxn$9en9=')
 DEBUG = os.getenv('DEBUG', 'True') == 'True'
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'talentlink-um0f.onrender.com',
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -57,7 +61,6 @@ DATABASES = {
     'default': dj_database_url.parse(
         os.getenv('DATABASE_URL', f'sqlite:///{BASE_DIR / "db.sqlite3"}'),
         conn_max_age=600,
-        conn_health_checks=True
     )
 }
 
