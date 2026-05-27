@@ -1,0 +1,1 @@
+Patching HomePage.js and ProjectFeed.js to fix ESLint errors: replace '#' anchors and add useCallback for fetchProjects.
